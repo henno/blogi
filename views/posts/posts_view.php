@@ -16,12 +16,9 @@
 			<div class="span8">
 				<p></p>
 				<p>
-					<i class="icon-user"></i> by <a href="#"><?=$post['user_id']?></a>
+					<i class="icon-user"></i> by <a href="#"><?=$post['username']?></a>
 					| <i class="icon-calendar"></i> <?=$post['post_created']?>
 					| <i class="icon-tags"></i> Tags : <a href="#"><span class="label label-info">Snipp</span></a>
-					<a href="#"><span class="label label-info">Bootstrap</span></a>
-					<a href="#"><span class="label label-info">UI</span></a>
-					<a href="#"><span class="label label-info">growth</span></a>
 				</p>
 			</div>
 		</div>
