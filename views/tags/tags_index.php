@@ -1,10 +1,11 @@
 <?foreach($tags as $tag):?>
 <div class="list-group">
 	<a href="#" class="list-group-item active">
-		Cras justo odio
+		Tags
 	</a>
+	<?foreach($tags as $tag):?>
 	<a href="#" class="list-group-item"><span class="badge">14</span>
-		<?=$post['post_subject']?>
+		<?=$tag['tag_name']?>
 	</a>
+	<?endforeach?>
 </div>
-<?endforeach?>
