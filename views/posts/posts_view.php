@@ -18,7 +18,7 @@
 				<p>
 					<i class="icon-user"></i> by <a href="#"><?=$post['username']?></a>
 					| <i class="icon-calendar"></i> <?=$post['post_created']?>
-					| <i class="icon-tags"></i> Tags : <a href="#"><span class="label label-info">Snipp</span></a>
+					| <i class="icon-tags"></i> Tags : <?foreach ($tags as $tag):?><a href="#"><span class="label label-info"><?=$tag['tag_name']?></span></a> <?endforeach?>
 				</p>
 			</div>
 		</div>
