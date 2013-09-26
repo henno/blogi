@@ -1,3 +1,4 @@
+<?foreach($tags as $tag):?>
 <div class="list-group">
 	<a href="#" class="list-group-item active">
 		Cras justo odio
@@ -6,3 +7,4 @@
 		<?=$post['post_subject']?>
 	</a>
 </div>
+<?endforeach?>
