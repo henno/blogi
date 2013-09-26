@@ -2,6 +2,7 @@
 
 class Controller
 {
+
 	public $template = 'master';
 
 	function render($template)

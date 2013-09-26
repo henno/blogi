@@ -29,7 +29,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title"><?=$post['username']?></h3>
+		<h3 class="panel-title"><?=$comment['username']?></h3>
 		<?=$comment['comment_time']?>
 	</div>
 	<div class="panel-body">
@@ -40,7 +40,7 @@
 
 <div class="span8 well">
 	<form accept-charset="UTF-8" action="" method="POST">
-		<textarea class="col-md-8" id="new_message" name="new_message"
+		<textarea class="col-md-8" id="comment_text" name="comment_text"
 				  placeholder="Type in your message" rows="5"></textarea>
 		<button class="btn btn-info" type="submit">Post Comment</button>
 	</form>

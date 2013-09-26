@@ -4,10 +4,12 @@ class posts extends Controller
 {
 	function view()
 	{
+		if (!empty($_POST))
+			$this->save();
 		$post_id = $this->params[0];
 		$this->post = get_one("SELECT * FROM post NATURAL JOIN user WHERE post_id='$post_id'");
 		$this->tags = get_all("SELECT * FROM post_tags NATURAL JOIN tag WHERE post_id='$post_id'");
-		$this->comments = get_all("SELECT * FROM post_comments NATURAL JOIN comment WHERE post_id='$post_id'");
+		$this->comments = get_all("SELECT * FROM post_comments NATURAL JOIN comment NATURAL JOIN user WHERE post_id='$post_id'");
 
 
 	}
@@ -24,5 +26,16 @@ class posts extends Controller
 		}
 
 
+	}
+
+	private function save()
+	{
+		insert(
+			'post_comments',
+			array(
+				'comment_id' => insert('comment', $_POST),
+				'post_id' => $this->params[0]
+			)
+		);
 	}
 }
