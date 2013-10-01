@@ -9,14 +9,14 @@ class posts extends Controller
 		$post_id = $this->params[0];
 		$this->post = get_one("SELECT * FROM post NATURAL JOIN user WHERE post_id='$post_id'");
 		$this->tags = get_all("SELECT * FROM post_tags NATURAL JOIN tag WHERE post_id='$post_id'");
-		$this->comments = get_all("SELECT * FROM post_comments NATURAL JOIN comment NATURAL JOIN user WHERE post_id='$post_id'");
+		$this->comments = get_all("SELECT *, IF(username IS NULL, 'Anonymous', username) as username FROM comment LEFT JOIN user USING(user_id) WHERE post_id='$post_id'");
 
 
 	}
 
 	function index()
 	{
-		$this->posts = get_all("SELECT * FROM post");
+		$this->posts = get_all("SELECT * FROM post NATURAL JOIN user ORDER BY post_created DESC");
 		$this->users = get_all("SELECT * FROM user");
 
 		// prepare tags array
@@ -30,12 +30,8 @@ class posts extends Controller
 
 	private function save()
 	{
-		insert(
-			'post_comments',
-			array(
-				'comment_id' => insert('comment', $_POST),
-				'post_id' => $this->params[0]
-			)
-		);
+		$post_id = $this->params[0];
+		insert('comment', $_POST+array('post_id'=>$post_id));
+
 	}
 }
